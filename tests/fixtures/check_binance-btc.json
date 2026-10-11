@@ -1,0 +1,75 @@
+{
+ "check_id": 3,
+ "checked_at": "2026-10-04T18:21:31.548574+00:00",
+ "effective_date": "",
+ "facts": {
+  "announcements": [
+   {
+    "complete": true,
+    "date": "2026-09-29",
+    "delisting_category": true,
+    "excerpt_chars": 1545,
+    "excerpt_digest": "2980240957b518173a0a1bb64e57523cc1232b9b3899473c6b8b47866144794e",
+    "excerpt_preview": "Notice of Removal of Spot Trading Pairs - 2026-10-02\nThis is a general Binance Exchange Notice. Products and services referred to here may not be available in your region.\nFellow Binancians,\nTo protect users and maintain a high quality trading market, Binance conducts periodic reviews of all listed ",
+    "names_token": false,
+    "readable": true,
+    "ref": "63415de54a164619aaaf245850349654",
+    "title": "Notice of Removal of Spot Trading Pairs - 2026-10-02",
+    "url": "https://www.binance.com/bapi/composite/v1/public/cms/article/detail/query?articleCode=63415de54a164619aaaf245850349654"
+   },
+   {
+    "complete": true,
+    "date": "2026-09-23",
+    "delisting_category": true,
+    "excerpt_chars": 1300,
+    "excerpt_digest": "19bcc08608ed8c4d69e996764fa07261f57cd4930081069a653956a9800857e8",
+    "excerpt_preview": "Binance Will Close UAH Deposits and Withdrawals via Fiat Trade UAH and Delist USDT/UAH Spot Trading Pair\nThis is a general announcement. The products and services mentioned may not be available in your region. Terms & Conditions apply.\nFellow Binancians,\nBinance will close UAH deposits and withdrawa",
+    "names_token": false,
+    "readable": true,
+    "ref": "7d17add1ffe6416391f65a001734e1c7",
+    "title": "Binance Will Close UAH Deposits and Withdrawals via Fiat Trade UAH and Delist USDT/UAH Spot Trading Pair",
+    "url": "https://www.binance.com/bapi/composite/v1/public/cms/article/detail/query?articleCode=7d17add1ffe6416391f65a001734e1c7"
+   },
+   {
+    "complete": true,
+    "date": "2026-09-22",
+    "delisting_category": true,
+    "excerpt_chars": 1598,
+    "excerpt_digest": "426de61bfe117bb0d60e05eb63eae934ad761880c43583910ad6d533d194fc80",
+    "excerpt_preview": "Notice of Removal of Spot Trading Pairs - 2026-09-25\nThis is a general Binance Exchange Notice. Products and services referred to here may not be available in your region.\nFellow Binancians,\nTo protect users and maintain a high quality trading market, Binance conducts periodic reviews of all listed ",
+    "names_token": false,
+    "readable": true,
+    "ref": "545ca5ad28254999b793bcf1ddd51f93",
+    "title": "Notice of Removal of Spot Trading Pairs - 2026-09-25",
+    "url": "https://www.binance.com/bapi/composite/v1/public/cms/article/detail/query?articleCode=545ca5ad28254999b793bcf1ddd51f93"
+   },
+   {
+    "complete": true,
+    "date": "2026-09-16",
+    "delisting_category": true,
+    "excerpt_chars": 1563,
+    "excerpt_digest": "bbeca0fa565424c424a41ddcbdbc058fc06e92520aededa88e354931cf91a912",
+    "excerpt_preview": "Notice of Removal of Spot Trading Pairs - 2026-09-18\nThis is a general Binance Exchange Notice. Products and services referred to here may not be available in your region.\nFellow Binancians,\nTo protect users and maintain a high quality trading market, Binance conducts periodic reviews of all listed ",
+    "names_token": false,
+    "readable": true,
+    "ref": "30b1347d97324180bb469c761e4eed5a",
+    "title": "Notice of Removal of Spot Trading Pairs - 2026-09-18",
+    "url": "https://www.binance.com/bapi/composite/v1/public/cms/article/detail/query?articleCode=30b1347d97324180bb469c761e4eed5a"
+   }
+  ],
+  "as_of": "2026-10-04",
+  "list_covers_lookback": true,
+  "list_ok": true,
+  "list_reaches": "2026-05-25",
+  "market_detail": "status=TRADING",
+  "market_state": "TRADING",
+  "market_url": "https://data-api.binance.vision/api/v3/exchangeInfo?symbol=BTCUSDT",
+  "matching_announcements": 4,
+  "scan_truncated": false
+ },
+ "reading": null,
+ "reasons": [],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "TRADING",
+ "watch_id": "binance-btc"
+}

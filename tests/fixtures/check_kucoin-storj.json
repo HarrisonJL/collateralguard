@@ -1,0 +1,41 @@
+{
+ "check_id": 0,
+ "checked_at": "2026-10-04T18:20:50.409707+00:00",
+ "effective_date": "",
+ "facts": {
+  "announcements": [
+   {
+    "complete": true,
+    "date": "2026-08-23",
+    "delisting_category": true,
+    "excerpt_chars": 3552,
+    "excerpt_digest": "4c20c8469cdf86fdeea6b5dbe9bcf0417649ae157899585b1050176768ddcb95",
+    "excerpt_preview": "KuCoin Futures Will Delist the ICXUSDT and STORJUSDT Perpetual Contracts and Related Services (2026-08-26)\nTo mitigate market risks and provide users with a better trading experience, KuCoin Futures will delist the following perpetual contracts at 7:00 on August 26, 2026 (UTC) .\nThe detailed delisti",
+    "names_token": true,
+    "readable": true,
+    "ref": "/en-kucoin-futures-will-delist-the-icxusdt-and-storjusdt-perpetual-contracts-and-related-services-2026-08-26",
+    "title": "KuCoin Futures Will Delist the ICXUSDT and STORJUSDT Perpetual Contracts and Related Services (2026-08-26)",
+    "url": "https://www.kucoin.com/_api/cms/articles/en-kucoin-futures-will-delist-the-icxusdt-and-storjusdt-perpetual-contracts-and-related-services-2026-08-26?lang=en_US"
+   }
+  ],
+  "as_of": "2026-10-04",
+  "list_covers_lookback": true,
+  "list_ok": true,
+  "list_reaches": "2026-04-15",
+  "market_detail": "enableTrading=true",
+  "market_state": "TRADING",
+  "market_url": "https://api.kucoin.com/api/v2/symbols/STORJ-USDT",
+  "matching_announcements": 1,
+  "scan_truncated": false
+ },
+ "reading": {
+  "effective_date": null,
+  "ends_spot": false,
+  "evidence": null,
+  "grounded": false
+ },
+ "reasons": [],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "TRADING",
+ "watch_id": "kucoin-storj"
+}

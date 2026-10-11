@@ -1,0 +1,24 @@
+{
+ "check_id": 2,
+ "checked_at": "2026-10-04T18:21:19.755901+00:00",
+ "effective_date": "",
+ "facts": {
+  "announcements": [],
+  "as_of": "2026-10-04",
+  "list_covers_lookback": null,
+  "list_ok": null,
+  "list_reaches": "",
+  "market_detail": "status=BREAK",
+  "market_state": "NOT_TRADING",
+  "market_url": "https://data-api.binance.vision/api/v3/exchangeInfo?symbol=STORJUSDT",
+  "matching_announcements": 0,
+  "scan_truncated": false
+ },
+ "reading": null,
+ "reasons": [
+  "market_not_trading:status=BREAK"
+ ],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "NOT_TRADING",
+ "watch_id": "binance-storj"
+}

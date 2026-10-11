@@ -1,0 +1,49 @@
+{
+ "check_id": 4,
+ "checked_at": "2026-10-04T18:21:43.514678+00:00",
+ "effective_date": "",
+ "facts": {
+  "announcements": [
+   {
+    "complete": true,
+    "date": "2026-09-23",
+    "delisting_category": true,
+    "excerpt_chars": 4140,
+    "excerpt_digest": "3a82f0b4fed233a4c2f65237ab8a45c6673f2a1a70008321fcdc08e96c76ebcb",
+    "excerpt_preview": "OKX to delist DORA, ICX, STORJ, ZEUS and ELF spot trading pairs\nOKX to delist DORA, ICX, STORJ, ZEUS and ELF spot trading pairs\nPublished on Sep 23, 2026 4 min read\nThis is a general update. Please check the availability of the listed token or product for your region in the app.\nIn order to maintain",
+    "names_token": false,
+    "readable": true,
+    "ref": "en-us/help/okx-to-delist-dora-icx-storj-zeus-and-elf-spot-trading-pairs",
+    "title": "OKX to delist DORA, ICX, STORJ, ZEUS and ELF spot trading pairs",
+    "url": "https://www.okx.com/en-us/help/okx-to-delist-dora-icx-storj-zeus-and-elf-spot-trading-pairs"
+   },
+   {
+    "complete": true,
+    "date": "2026-09-23",
+    "delisting_category": true,
+    "excerpt_chars": 2206,
+    "excerpt_digest": "a6e86dfcf96ae5ce8d9bbce593f479dc1bda925904cf0b2567222a47f04ca7b2",
+    "excerpt_preview": "OKX to delist selected USD spot trading pair\nOKX to delist selected USD spot trading pair\nPublished on Sep 23, 2026 2 min read\nIn order to maintain a robust spot trading environment, we constantly monitor the performance of all listed trading pairs and review their listing qualifications on a regula",
+    "names_token": false,
+    "readable": true,
+    "ref": "en-us/help/okx-to-delist-aeon-usd-spot-trading-pair",
+    "title": "OKX to delist selected USD spot trading pair",
+    "url": "https://www.okx.com/en-us/help/okx-to-delist-aeon-usd-spot-trading-pair"
+   }
+  ],
+  "as_of": "2026-10-04",
+  "list_covers_lookback": true,
+  "list_ok": true,
+  "list_reaches": "2025-09-01",
+  "market_detail": "state=live",
+  "market_state": "TRADING",
+  "market_url": "https://www.okx.com/api/v5/public/instruments?instType=SPOT&instId=BTC-USDT",
+  "matching_announcements": 2,
+  "scan_truncated": false
+ },
+ "reading": null,
+ "reasons": [],
+ "submitted_by": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+ "verdict": "TRADING",
+ "watch_id": "okx-btc"
+}

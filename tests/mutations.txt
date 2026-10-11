@@ -1,0 +1,263 @@
+a missing check counts in full
+---
+"state": "NO_CHECK", "weight_pct": 0,
+---
+"state": "NO_CHECK", "weight_pct": 100,
+===
+a stale check is counted
+---
+    if not 0 <= age <= max_age:
+---
+    if False:
+===
+a check from the future is counted
+---
+    if not 0 <= age <= max_age:
+---
+    if not age <= max_age:
+===
+the freshness limit is exclusive
+---
+    if not 0 <= age <= max_age:
+---
+    if not 0 <= age < max_age:
+===
+a trading market counts for little
+---
+"state": "TRADING", "weight_pct": 100,
+---
+"state": "TRADING", "weight_pct": 90,
+===
+a market that is not trading counts
+---
+"state": "OUT", "weight_pct": 0,
+---
+"state": "OUT", "weight_pct": 100,
+===
+an unknown verdict counts
+---
+"state": "UNKNOWN", "weight_pct": 0, "days_left": None, "reason": f"the latest check is {verdict}"
+---
+"state": "UNKNOWN", "weight_pct": 100, "days_left": None, "reason": f"the latest check is {verdict}"
+===
+a delisting needs a month to count at three quarters
+---
+COUNTDOWN = ((30, 75), (14, 50), (7, 25))
+---
+COUNTDOWN = ((31, 75), (14, 50), (7, 25))
+===
+a delisting counts half only from a fortnight
+---
+COUNTDOWN = ((30, 75), (14, 50), (7, 25))
+---
+COUNTDOWN = ((30, 75), (15, 50), (7, 25))
+===
+a delisting counts a quarter only from a week
+---
+COUNTDOWN = ((30, 75), (14, 50), (7, 25))
+---
+COUNTDOWN = ((30, 75), (14, 50), (8, 25))
+===
+a delisting inside a week still counts
+---
+COUNTDOWN = ((30, 75), (14, 50), (7, 25))
+---
+COUNTDOWN = ((30, 75), (14, 50), (7, 25), (0, 10))
+===
+a delisting counts for more than the trading venue
+---
+COUNTDOWN = ((30, 75), (14, 50), (7, 25))
+---
+COUNTDOWN = ((30, 175), (14, 50), (7, 25))
+===
+the days left are counted backwards
+---
+days = (on - today).days
+---
+days = (today - on).days
+===
+a date that is not a date crashes the view
+---
+        except (ValueError, TypeError):
+            on = None
+---
+        except ZeroDivisionError:
+            on = None
+===
+a date that is not text crashes the view
+---
+datetime.date.fromisoformat(effective) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", effective) else None
+---
+datetime.date.fromisoformat(effective)
+===
+the countdown is read in local time
+---
+datetime.datetime.fromtimestamp(now_seconds, datetime.timezone.utc).date()
+---
+datetime.datetime.fromtimestamp(now_seconds + 86400, datetime.timezone.utc).date()
+===
+coverage is the best venue
+---
+    return sum(weights) // len(weights) if weights else 0
+---
+    return max(weights) if weights else 0
+===
+coverage is the total
+---
+    return sum(weights) // len(weights) if weights else 0
+---
+    return sum(weights) if weights else 0
+===
+coverage rounds up
+---
+    return sum(weights) // len(weights) if weights else 0
+---
+    return -(-sum(weights) // len(weights)) if weights else 0
+===
+coverage of nothing is full
+---
+    return sum(weights) // len(weights) if weights else 0
+---
+    return sum(weights) // len(weights) if weights else 100
+===
+a rung needs more than its minimum
+---
+        if coverage_pct >= minimum:
+---
+        if coverage_pct > minimum:
+===
+the first rung always applies
+---
+        if coverage_pct >= minimum:
+---
+        if True:
+===
+no rung means full ratio
+---
+        return base_ltv_bps * share // 100
+    return 0
+---
+        return base_ltv_bps * share // 100
+    return base_ltv_bps
+===
+the ladder ignores the base ratio
+---
+return base_ltv_bps * share // 100
+---
+return share * 100
+===
+the ladder rounds up
+---
+return base_ltv_bps * share // 100
+---
+return -(-base_ltv_bps * share // 100)
+===
+what may be borrowed rounds up
+---
+    return collateral_value * ltv_bps // BPS
+---
+    return -(-collateral_value * ltv_bps // BPS)
+===
+what may be borrowed ignores the ratio
+---
+    return collateral_value * ltv_bps // BPS
+---
+    return collateral_value
+===
+a ladder that is not JSON crashes
+---
+    except ValueError:
+        _require(False, "ladder must be JSON
+---
+    except ZeroDivisionError:
+        _require(False, "ladder must be JSON
+===
+a malformed ladder is accepted
+---
+             "ladder must be 1-8 pairs of whole percentages between 0 and 100")
+---
+             "ladder must be 1-8 pairs of whole percentages between 0 and 100") if False else None
+===
+a ladder that does not descend is accepted
+---
+    _require(all(ladder[i][0] > ladder[i + 1][0] for i in range(len(ladder) - 1)),
+---
+    _require(True,
+===
+a ladder whose shares rise as coverage falls is accepted
+---
+    _require(all(ladder[i][1] >= ladder[i + 1][1] for i in range(len(ladder) - 1)),
+---
+    _require(True,
+===
+percentages may exceed 100
+---
+and 0 <= r[0] <= 100 and 0 <= r[1] <= 100 for r in ladder),
+---
+and 0 <= r[0] and 0 <= r[1] for r in ladder),
+===
+a ladder may hold any number of rungs
+---
+1 <= len(ladder) <= 8
+---
+1 <= len(ladder) <= 80
+===
+a zero freshness limit is accepted
+---
+        _require(max_age_seconds > 0, "max_age_seconds must be positive")
+---
+        _require(True, "max_age_seconds must be positive")
+===
+the base ratio may exceed 100%
+---
+        _require(0 < base_ltv_bps <= BPS, "base_ltv_bps must be between 1 and 10000")
+---
+        _require(True, "base_ltv_bps must be between 1 and 10000")
+===
+anyone can create a basket
+---
+        _require(gl.message.sender_address == self.owner, "only the owner can create a basket")
+---
+        _require(True, "only the owner can create a basket")
+===
+a basket id can be anything
+---
+        _require(re.fullmatch(r"[A-Za-z0-9_-]{1,32}", basket_id) is not None,
+---
+        _require(True,
+===
+a token can be anything
+---
+        _require(re.fullmatch(r"[A-Z0-9]{1,15}", token) is not None, "token must be 1-15 characters of A-Z or 0-9")
+---
+        _require(True, "token must be 1-15 characters of A-Z or 0-9")
+===
+a basket can hold any number of venues
+---
+        _require(1 <= len(watch_ids) <= MAX_VENUES,
+---
+        _require(True,
+===
+a venue can be in a basket twice
+---
+        _require(len(set(watch_ids)) == len(watch_ids), "a venue can only be in a basket once")
+---
+        _require(True, "a venue can only be in a basket once")
+===
+a zero loan is accepted
+---
+        _require(amount > 0, "amount must be positive")
+---
+        _require(True, "amount must be positive")
+===
+a loan against an unknown basket is accepted
+---
+        _require(basket_id in self.baskets, "unknown basket_id")
+        b = self.baskets[basket_id]
+        venues = self._venues(b)
+        limit
+---
+        _require(True, "unknown basket_id")
+        b = self.baskets[basket_id]
+        venues = self._venues(b)
+        limit

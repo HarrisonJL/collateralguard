@@ -1,0 +1,902 @@
+[
+ {
+  "id": "watch-binance-eth",
+  "step": "watch",
+  "args": [
+   "binance-eth",
+   "binance",
+   "ETH",
+   "USDT",
+   "ETH/USDT on Binance"
+  ],
+  "note": "DelistWatch learns ETH/USDT on Binance",
+  "tx": "0x0df3170cf82a873e237b1dd25c44d1c4bf4ce5aeff195f21f1ffb63f49116ea2",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "IDLE",
+   "AGREE"
+  ]
+ },
+ {
+  "id": "watch-okx-eth",
+  "step": "watch",
+  "args": [
+   "okx-eth",
+   "okx",
+   "ETH",
+   "USDT",
+   "ETH/USDT on OKX"
+  ],
+  "note": "DelistWatch learns ETH/USDT on OKX",
+  "tx": "0x144848d7329e7053666609be4aa1492e9bf9032428d2377ac8d95edfc7218ee0",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "AGREE"
+  ]
+ },
+ {
+  "id": "watch-kucoin-eth",
+  "step": "watch",
+  "args": [
+   "kucoin-eth",
+   "kucoin",
+   "ETH",
+   "USDT",
+   "ETH/USDT on KuCoin"
+  ],
+  "note": "DelistWatch learns ETH/USDT on KuCoin",
+  "tx": "0x9b43b63cb29f8a05a83354729f9e3891a3b9af2524253cf828cdd40435d00c0a",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "AGREE"
+  ]
+ },
+ {
+  "id": "basket-btc-core",
+  "step": "basket",
+  "args": [
+   "btc-core",
+   "BTC",
+   [
+    "binance-btc",
+    "okx-btc"
+   ]
+  ],
+  "note": "Bitcoin on two exchanges, both trading",
+  "tx": "0x66e2661dce4899314f6e81900225f0d9102491496ee10d0064521814e5044c4a",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "AGREE"
+  ],
+  "revert": ""
+ },
+ {
+  "id": "basket-eth-core",
+  "step": "basket",
+  "args": [
+   "eth-core",
+   "ETH",
+   [
+    "binance-eth",
+    "okx-eth",
+    "kucoin-eth"
+   ]
+  ],
+  "note": "Ether on three exchanges, all trading",
+  "tx": "0x978e2669d8b48a7bab94a68d837ded4741c8c9dfb63dcc63b6006423b458a77e",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE"
+  ],
+  "revert": ""
+ },
+ {
+  "id": "basket-storj-mixed",
+  "step": "basket",
+  "args": [
+   "storj-mixed",
+   "STORJ",
+   [
+    "binance-storj",
+    "okx-storj",
+    "kucoin-storj"
+   ]
+  ],
+  "note": "STORJ delisted on Binance and OKX, still trading on KuCoin: one venue in three",
+  "tx": "0x9527bf4430a106fb862ea2eb5c0ff4a71cf54a5d740167dcc22c116172079c04",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "IDLE"
+  ],
+  "revert": ""
+ },
+ {
+  "id": "basket-storj-gone",
+  "step": "basket",
+  "args": [
+   "storj-gone",
+   "STORJ",
+   [
+    "binance-storj",
+    "okx-storj"
+   ]
+  ],
+  "note": "STORJ on the two exchanges that delisted it: nothing left",
+  "tx": "0x54eb68beb6526f105ea1de20680c5d8511851dfe415ce2c353b5c20a0ac52cc8",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE"
+  ],
+  "revert": ""
+ },
+ {
+  "id": "refuse-basket-twice",
+  "step": "refuse-basket",
+  "args": [
+   "btc-core",
+   "BTC",
+   [
+    "binance-btc"
+   ]
+  ],
+  "note": "a basket id used twice",
+  "tx": "0x60aeeb2cb34e531b7aa6c2516f0d3d9096b7f140269872d93c318a45f0a6aca1",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE"
+  ],
+  "revert": "basket_id already exists"
+ },
+ {
+  "id": "refuse-wrong-token",
+  "step": "refuse-basket",
+  "args": [
+   "x-wrong",
+   "BTC",
+   [
+    "binance-btc",
+    "binance-storj"
+   ]
+  ],
+  "note": "a STORJ market inside a BTC basket",
+  "tx": "0x57d5b02fdbdbd6818f0eb2d0da1e5dc327fb6b0818b3096481a843a8dc583be8",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "IDLE"
+  ],
+  "revert": "'binance-storj' refused: it watches STORJ, not BTC"
+ },
+ {
+  "id": "refuse-unknown-watch",
+  "step": "refuse-basket",
+  "args": [
+   "x-unknown",
+   "BTC",
+   [
+    "binance-doge"
+   ]
+  ],
+  "note": "a market DelistWatch has never heard of",
+  "tx": "0x978ba1e420b4d82e81d410fe743a9f31199d1fd197986d91a7c394e1eec5f2fd",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "IDLE",
+   "AGREE"
+  ],
+  "revert": "'binance-doge' refused: DelistWatch has no such watch"
+ },
+ {
+  "id": "refuse-duplicate-venue",
+  "step": "refuse-basket",
+  "args": [
+   "x-dup",
+   "BTC",
+   [
+    "binance-btc",
+    "binance-btc"
+   ]
+  ],
+  "note": "the same market listed twice",
+  "tx": "0x680590397f98b319b27c18fa24d48a8da3ad0a8d14f193b30f1c96490b2b8b1d",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE"
+  ],
+  "revert": "a venue can only be in a basket once"
+ },
+ {
+  "id": "check-binance-btc",
+  "step": "check",
+  "args": [
+   "binance-btc"
+  ],
+  "note": "DelistWatch reads binance-btc on the exchange",
+  "tx": "0x509d0f2474e7df77b0c799b9934e3541e89eb16203d2a11b6d5cd00b9571a15d",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "IDLE",
+   "AGREE"
+  ],
+  "check": {
+   "check_id": 10,
+   "verdict": "TRADING",
+   "checked_at": "2026-10-11T21:45:58.762184+00:00",
+   "effective_date": "",
+   "reasons": []
+  }
+ },
+ {
+  "id": "check-okx-btc",
+  "step": "check",
+  "args": [
+   "okx-btc"
+  ],
+  "note": "DelistWatch reads okx-btc on the exchange",
+  "tx": "0xd912ccc64d72219e43d107598a8c5ae97766590fe800c49d0dab4339b1938f08",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "AGREE"
+  ],
+  "check": {
+   "check_id": 11,
+   "verdict": "TRADING",
+   "checked_at": "2026-10-11T21:46:13.639608+00:00",
+   "effective_date": "",
+   "reasons": []
+  }
+ },
+ {
+  "id": "check-binance-eth",
+  "step": "check",
+  "args": [
+   "binance-eth"
+  ],
+  "note": "DelistWatch reads binance-eth on the exchange",
+  "tx": "0xb5ca763a6dc294617b0cf1d281cb55495ea80c78b577e0192e461c755b42c7e9",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE"
+  ],
+  "check": {
+   "check_id": 12,
+   "verdict": "TRADING",
+   "checked_at": "2026-10-11T21:46:28.594460+00:00",
+   "effective_date": "",
+   "reasons": []
+  }
+ },
+ {
+  "id": "check-okx-eth",
+  "step": "check",
+  "args": [
+   "okx-eth"
+  ],
+  "note": "DelistWatch reads okx-eth on the exchange",
+  "tx": "0xbe6f2bdc8b4da91b426ebf766aa6bf64ec5f985d4fa85beb517fe6afd133e361",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "AGREE"
+  ],
+  "check": {
+   "check_id": 13,
+   "verdict": "TRADING",
+   "checked_at": "2026-10-11T21:46:42.747715+00:00",
+   "effective_date": "",
+   "reasons": []
+  }
+ },
+ {
+  "id": "check-kucoin-eth",
+  "step": "check",
+  "args": [
+   "kucoin-eth"
+  ],
+  "note": "DelistWatch reads kucoin-eth on the exchange",
+  "tx": "0xb9a894fc341ba87d8b090ee6a10ab892b3d48377b142e19696510fa268063da9",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE",
+   "AGREE"
+  ],
+  "check": {
+   "check_id": 14,
+   "verdict": "TRADING",
+   "checked_at": "2026-10-11T21:46:57.395249+00:00",
+   "effective_date": "",
+   "reasons": []
+  }
+ },
+ {
+  "id": "check-binance-storj",
+  "step": "check",
+  "args": [
+   "binance-storj"
+  ],
+  "note": "DelistWatch reads binance-storj on the exchange",
+  "tx": "0x8f0540e48b29ea18ef7c7bc3aa361f24d4b37294d008a2ffff9206ca4e98a0c5",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE"
+  ],
+  "check": {
+   "check_id": 15,
+   "verdict": "NOT_TRADING",
+   "checked_at": "2026-10-11T21:47:12.793029+00:00",
+   "effective_date": "",
+   "reasons": [
+    "market_not_trading:status=BREAK"
+   ]
+  }
+ },
+ {
+  "id": "check-okx-storj",
+  "step": "check",
+  "args": [
+   "okx-storj"
+  ],
+  "note": "DelistWatch reads okx-storj on the exchange",
+  "tx": "0xb0133b2c302603bb93221cee23ff2de59b43ea05495409c21119847408acf33a",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "AGREE",
+   "IDLE"
+  ],
+  "check": {
+   "check_id": 16,
+   "verdict": "NOT_TRADING",
+   "checked_at": "2026-10-11T21:47:22.529349+00:00",
+   "effective_date": "",
+   "reasons": [
+    "market_not_listed:Instrument ID doesn't exist"
+   ]
+  }
+ },
+ {
+  "id": "check-kucoin-storj",
+  "step": "check",
+  "args": [
+   "kucoin-storj"
+  ],
+  "note": "DelistWatch reads kucoin-storj on the exchange",
+  "tx": "0x971b5cd4efdd3d34fa16a574b75caecdffdd87e9c168d81b06f33e5d5e81a2bc",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE"
+  ],
+  "check": {
+   "check_id": 17,
+   "verdict": "TRADING",
+   "checked_at": "2026-10-11T21:47:31.935063+00:00",
+   "effective_date": "",
+   "reasons": []
+  }
+ },
+ {
+  "id": "b-btc-ok",
+  "step": "borrow",
+  "args": [
+   "btc-core",
+   "1000000",
+   "500000"
+  ],
+  "note": "full coverage: 60% loan-to-value, so up to 600,000 against 1,000,000",
+  "tx": "0x3e08296318d38d6304a3b6a8bb28f7e02d9721ea1498521b64f67b950082748d",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE",
+   "AGREE"
+  ],
+  "revert": "",
+  "max_borrow": {
+   "basket_id": "btc-core",
+   "collateral_value": "1000000",
+   "coverage_pct": 100,
+   "ltv_bps": 6000,
+   "max_borrow": "600000"
+  }
+ },
+ {
+  "id": "b-btc-over",
+  "step": "borrow",
+  "args": [
+   "btc-core",
+   "1000000",
+   "700000"
+  ],
+  "note": "more than the limit: refused, with the limit stated",
+  "tx": "0x1e89a70c543e793dedeea74c862f95cc9dd8e1984c80b140c721c92b15596a0d",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "AGREE"
+  ],
+  "revert": "'btc-core' refused: 60% loan-to-value at 100% coverage allows 600000 against 1000000",
+  "max_borrow": {
+   "basket_id": "btc-core",
+   "collateral_value": "1000000",
+   "coverage_pct": 100,
+   "ltv_bps": 6000,
+   "max_borrow": "600000"
+  }
+ },
+ {
+  "id": "b-eth-ok",
+  "step": "borrow",
+  "args": [
+   "eth-core",
+   "2000000",
+   "1200000"
+  ],
+  "note": "exactly at the limit (60% of 2,000,000): allowed",
+  "tx": "0x2ea9842ad1cde0a67049e9bea2984dd5b040351eab72f7a37b8fddc5229caaa1",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE"
+  ],
+  "revert": "",
+  "max_borrow": {
+   "basket_id": "eth-core",
+   "collateral_value": "2000000",
+   "coverage_pct": 100,
+   "ltv_bps": 6000,
+   "max_borrow": "1200000"
+  }
+ },
+ {
+  "id": "b-storj-ok",
+  "step": "borrow",
+  "args": [
+   "storj-mixed",
+   "1000000",
+   "200000"
+  ],
+  "note": "one venue in three trades: coverage 33%, so 40% of the 60%: up to 240,000",
+  "tx": "0x1ad5702006b61fed0d78e36bbe944a523772d3550891302b7969cb0c1541762a",
+  "result": "FINISHED_WITH_RETURN",
+  "votes": [
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "AGREE"
+  ],
+  "revert": "",
+  "max_borrow": {
+   "basket_id": "storj-mixed",
+   "collateral_value": "1000000",
+   "coverage_pct": 33,
+   "ltv_bps": 2400,
+   "max_borrow": "240000"
+  }
+ },
+ {
+  "id": "b-storj-over",
+  "step": "borrow",
+  "args": [
+   "storj-mixed",
+   "1000000",
+   "300000"
+  ],
+  "note": "above that reduced limit: refused",
+  "tx": "0x55c26be14e7afca374bc2a6dbd112c53409ad22cd1c1f2a1806db5737b0088ae",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "AGREE",
+   "AGREE",
+   "AGREE",
+   "IDLE",
+   "IDLE"
+  ],
+  "revert": "'storj-mixed' refused: 24% loan-to-value at 33% coverage allows 240000 against 1000000",
+  "max_borrow": {
+   "basket_id": "storj-mixed",
+   "collateral_value": "1000000",
+   "coverage_pct": 33,
+   "ltv_bps": 2400,
+   "max_borrow": "240000"
+  }
+ },
+ {
+  "id": "b-gone",
+  "step": "borrow",
+  "args": [
+   "storj-gone",
+   "1000000",
+   "1"
+  ],
+  "note": "coverage 0%: no loans at all",
+  "tx": "0x770a6c38171984c951c44bc8c29a9ccddfc33daa735d230180d1f09703c18525",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "AGREE",
+   "IDLE",
+   "AGREE",
+   "IDLE",
+   "AGREE"
+  ],
+  "revert": "'storj-gone' refused: coverage of STORJ is 0%, which allows no loans",
+  "max_borrow": {
+   "basket_id": "storj-gone",
+   "collateral_value": "1000000",
+   "coverage_pct": 0,
+   "ltv_bps": 0,
+   "max_borrow": "0"
+  }
+ },
+ {
+  "id": "b-unknown",
+  "step": "borrow",
+  "args": [
+   "no-such-basket",
+   "1000000",
+   "1"
+  ],
+  "note": "a basket that does not exist",
+  "tx": "0x41b328f457a01a13445602f0db418c8ab59336eb0a86c32e14c99933dc826fc1",
+  "result": "FINISHED_WITH_ERROR",
+  "votes": [
+   "IDLE",
+   "IDLE",
+   "AGREE",
+   "AGREE",
+   "AGREE"
+  ],
+  "revert": "unknown basket_id",
+  "max_borrow": null
+ },
+ {
+  "id": "read",
+  "step": "read",
+  "baskets": {
+   "btc-core": {
+    "base_ltv_bps": 6000,
+    "basket_id": "btc-core",
+    "borrowed": "500000",
+    "coverage_pct": 100,
+    "created_at": "2026-10-11T21:44:43.391404+00:00",
+    "ltv_bps": 6000,
+    "token": "BTC",
+    "venues": [
+     {
+      "age_seconds": 267,
+      "check_id": 10,
+      "checked_at": "2026-10-11T21:45:58.762184+00:00",
+      "days_left": null,
+      "exchange": "binance",
+      "quote": "USDT",
+      "reason": "the spot market is trading, with no announced end",
+      "state": "TRADING",
+      "verdict": "TRADING",
+      "watch_id": "binance-btc",
+      "weight_pct": 100
+     },
+     {
+      "age_seconds": 252,
+      "check_id": 11,
+      "checked_at": "2026-10-11T21:46:13.639608+00:00",
+      "days_left": null,
+      "exchange": "okx",
+      "quote": "USDT",
+      "reason": "the spot market is trading, with no announced end",
+      "state": "TRADING",
+      "verdict": "TRADING",
+      "watch_id": "okx-btc",
+      "weight_pct": 100
+     }
+    ]
+   },
+   "eth-core": {
+    "base_ltv_bps": 6000,
+    "basket_id": "eth-core",
+    "borrowed": "1200000",
+    "coverage_pct": 100,
+    "created_at": "2026-10-11T21:44:49.341347+00:00",
+    "ltv_bps": 6000,
+    "token": "ETH",
+    "venues": [
+     {
+      "age_seconds": 240,
+      "check_id": 12,
+      "checked_at": "2026-10-11T21:46:28.594460+00:00",
+      "days_left": null,
+      "exchange": "binance",
+      "quote": "USDT",
+      "reason": "the spot market is trading, with no announced end",
+      "state": "TRADING",
+      "verdict": "TRADING",
+      "watch_id": "binance-eth",
+      "weight_pct": 100
+     },
+     {
+      "age_seconds": 226,
+      "check_id": 13,
+      "checked_at": "2026-10-11T21:46:42.747715+00:00",
+      "days_left": null,
+      "exchange": "okx",
+      "quote": "USDT",
+      "reason": "the spot market is trading, with no announced end",
+      "state": "TRADING",
+      "verdict": "TRADING",
+      "watch_id": "okx-eth",
+      "weight_pct": 100
+     },
+     {
+      "age_seconds": 211,
+      "check_id": 14,
+      "checked_at": "2026-10-11T21:46:57.395249+00:00",
+      "days_left": null,
+      "exchange": "kucoin",
+      "quote": "USDT",
+      "reason": "the spot market is trading, with no announced end",
+      "state": "TRADING",
+      "verdict": "TRADING",
+      "watch_id": "kucoin-eth",
+      "weight_pct": 100
+     }
+    ]
+   },
+   "storj-mixed": {
+    "base_ltv_bps": 6000,
+    "basket_id": "storj-mixed",
+    "borrowed": "200000",
+    "coverage_pct": 33,
+    "created_at": "2026-10-11T21:44:55.562078+00:00",
+    "ltv_bps": 2400,
+    "token": "STORJ",
+    "venues": [
+     {
+      "age_seconds": 200,
+      "check_id": 15,
+      "checked_at": "2026-10-11T21:47:12.793029+00:00",
+      "days_left": null,
+      "exchange": "binance",
+      "quote": "USDT",
+      "reason": "the exchange's own data says the market is not trading",
+      "state": "OUT",
+      "verdict": "NOT_TRADING",
+      "watch_id": "binance-storj",
+      "weight_pct": 0
+     },
+     {
+      "age_seconds": 190,
+      "check_id": 16,
+      "checked_at": "2026-10-11T21:47:22.529349+00:00",
+      "days_left": null,
+      "exchange": "okx",
+      "quote": "USDT",
+      "reason": "the exchange's own data says the market is not trading",
+      "state": "OUT",
+      "verdict": "NOT_TRADING",
+      "watch_id": "okx-storj",
+      "weight_pct": 0
+     },
+     {
+      "age_seconds": 181,
+      "check_id": 17,
+      "checked_at": "2026-10-11T21:47:31.935063+00:00",
+      "days_left": null,
+      "exchange": "kucoin",
+      "quote": "USDT",
+      "reason": "the spot market is trading, with no announced end",
+      "state": "TRADING",
+      "verdict": "TRADING",
+      "watch_id": "kucoin-storj",
+      "weight_pct": 100
+     }
+    ]
+   },
+   "storj-gone": {
+    "base_ltv_bps": 6000,
+    "basket_id": "storj-gone",
+    "borrowed": "0",
+    "coverage_pct": 0,
+    "created_at": "2026-10-11T21:45:07.177738+00:00",
+    "ltv_bps": 0,
+    "token": "STORJ",
+    "venues": [
+     {
+      "age_seconds": 204,
+      "check_id": 15,
+      "checked_at": "2026-10-11T21:47:12.793029+00:00",
+      "days_left": null,
+      "exchange": "binance",
+      "quote": "USDT",
+      "reason": "the exchange's own data says the market is not trading",
+      "state": "OUT",
+      "verdict": "NOT_TRADING",
+      "watch_id": "binance-storj",
+      "weight_pct": 0
+     },
+     {
+      "age_seconds": 194,
+      "check_id": 16,
+      "checked_at": "2026-10-11T21:47:22.529349+00:00",
+      "days_left": null,
+      "exchange": "okx",
+      "quote": "USDT",
+      "reason": "the exchange's own data says the market is not trading",
+      "state": "OUT",
+      "verdict": "NOT_TRADING",
+      "watch_id": "okx-storj",
+      "weight_pct": 0
+     }
+    ]
+   }
+  },
+  "loans": [
+   {
+    "amount": "200000",
+    "basket_id": "storj-mixed",
+    "borrower": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+    "collateral_value": "1000000",
+    "coverage_pct": 33,
+    "loan_id": 2,
+    "ltv_bps": 2400,
+    "recorded_at": "2026-10-11T21:49:24.547936+00:00"
+   },
+   {
+    "amount": "1200000",
+    "basket_id": "eth-core",
+    "borrower": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+    "collateral_value": "2000000",
+    "coverage_pct": 100,
+    "loan_id": 1,
+    "ltv_bps": 6000,
+    "recorded_at": "2026-10-11T21:49:09.589994+00:00"
+   },
+   {
+    "amount": "500000",
+    "basket_id": "btc-core",
+    "borrower": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b",
+    "collateral_value": "1000000",
+    "coverage_pct": 100,
+    "loan_id": 0,
+    "ltv_bps": 6000,
+    "recorded_at": "2026-10-11T21:48:43.626923+00:00"
+   }
+  ],
+  "config": {
+   "base_ltv_bps": 6000,
+   "basket_count": 4,
+   "delistwatch_address": "0x1AFffBad8fCfBEFD9494fd8994118f586B85DAFc",
+   "ladder": [
+    [
+     100,
+     100
+    ],
+    [
+     66,
+     70
+    ],
+    [
+     33,
+     40
+    ]
+   ],
+   "loan_count": 3,
+   "max_age_seconds": 86400,
+   "owner": "0x5cdb5699bc1038e115A973bb91A646f7E98C075b"
+  },
+  "rules": {
+   "base_ltv_bps": 6000,
+   "countdown": [
+    {
+     "days_at_least": 30,
+     "venue_share_pct": 75
+    },
+    {
+     "days_at_least": 14,
+     "venue_share_pct": 50
+    },
+    {
+     "days_at_least": 7,
+     "venue_share_pct": 25
+    }
+   ],
+   "coverage_ladder": [
+    [
+     100,
+     100
+    ],
+    [
+     66,
+     70
+    ],
+    [
+     33,
+     40
+    ]
+   ],
+   "max_age_seconds": 86400,
+   "venue_states": {
+    "DELISTING": "by countdown",
+    "NO_CHECK": 0,
+    "OUT": 0,
+    "STALE": 0,
+    "TRADING": 100,
+    "UNKNOWN": 0
+   }
+  }
+ }
+]

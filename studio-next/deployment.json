@@ -1,0 +1,25 @@
+{
+ "date": "2026-10-11",
+ "guard": {
+  "address": "0x1b0C8D779D58DFD67CF491840A8b081094d53e8C",
+  "deploy_tx": "0x433caa5c2d8d7a661c673591a1ceac31cdc5efeee19e46d1b114fcecd090d732",
+  "sha256": "f421faf1124ee70c8ff8fc22cdbfce1b5663bca8d576f715cd1fe70e99db4a35"
+ },
+ "delistwatch": {
+  "address": "0x1AFffBad8fCfBEFD9494fd8994118f586B85DAFc",
+  "deploy_tx": "0x6ace2420cb9a57c6cbca4d8aae1553f757fd01347c64d3ad57881fd0517a1f04"
+ },
+ "found_live": [
+  "**One venue's delisting is not the token's.** STORJ has been delisted on Binance (the exchange's market data says `status=BREAK`) and on OKX (`Instrument ID doesn't exist`), and still trades on KuCoin. The same token, in three baskets of the same shape, got three different answers: ETH on three exchanges, all trading, 100% coverage and the full 60% loan-to-value; STORJ across all three, 33% coverage and 24%; STORJ across only the two exchanges that delisted it, 0% and no loans.",
+  "**The limit is read at the moment of the loan, from DelistWatch's own record.** Borrowing 500,000 against 1,000,000 of Bitcoin was recorded; 700,000 was refused with the limit in the message (`allows 600000 against 1000000`). The STORJ loan of 200,000 was recorded under the 24% limit and 300,000 was refused under it. `max_borrow` told the same numbers before any loan was sent.",
+  "**Borrowing is permissionless, and the policy does not need to know the borrower.** The limit comes from DelistWatch's record of the exchanges, not from anything the borrower supplies except the basket, the collateral value and the amount. (The loans in this proof were sent by the deployer; the web app lets any account borrow.)",
+  "**Nothing here was a trade or a custody.** The policy records loans and limits; no tokens moved, and its numbers are units of account, as in the proof's 1,000,000-unit collateral."
+ ],
+ "superseded": [
+  {
+   "contract": "CollateralGuard (trial instance)",
+   "address": "0x585F7cb9561683b9AA079ac77cD831Afc724135a",
+   "why": "Same code (byte-identical), deployed for a trial run. Replaced by a clean deployment so every row of the live proof starts from empty."
+  }
+ ]
+}

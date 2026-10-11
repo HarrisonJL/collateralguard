@@ -1,0 +1,42 @@
+[
+ {
+  "base": "BTC",
+  "check_count": 1,
+  "exchange": "binance",
+  "label": "BTC/USDT on Binance",
+  "quote": "USDT",
+  "watch_id": "binance-btc"
+ },
+ {
+  "base": "STORJ",
+  "check_count": 1,
+  "exchange": "binance",
+  "label": "STORJ/USDT on Binance (delisting scheduled 3 Sep 2026)",
+  "quote": "USDT",
+  "watch_id": "binance-storj"
+ },
+ {
+  "base": "STORJ",
+  "check_count": 1,
+  "exchange": "kucoin",
+  "label": "STORJ/USDT on KuCoin (its STORJ futures were delisted in August)",
+  "quote": "USDT",
+  "watch_id": "kucoin-storj"
+ },
+ {
+  "base": "BTC",
+  "check_count": 1,
+  "exchange": "okx",
+  "label": "BTC/USDT on OKX",
+  "quote": "USDT",
+  "watch_id": "okx-btc"
+ },
+ {
+  "base": "STORJ",
+  "check_count": 1,
+  "exchange": "okx",
+  "label": "STORJ/USDT on OKX (delisting scheduled 3 Oct 2026)",
+  "quote": "USDT",
+  "watch_id": "okx-storj"
+ }
+]
