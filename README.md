@@ -7,7 +7,7 @@
 | Network | GenLayer Studio Next (chain 61997) |
 | CollateralGuard | [`0x1b0C8D779D58DFD67CF491840A8b081094d53e8C`](https://explorer-studio-dev.genlayer.com/address/0x1b0C8D779D58DFD67CF491840A8b081094d53e8C) |
 | Reads | [DelistWatch `0x1AFffBad…85DAFc`](https://explorer-studio-dev.genlayer.com/address/0x1AFffBad8fCfBEFD9494fd8994118f586B85DAFc) (the published oracle: its validators read Binance's, OKX's and KuCoin's own market data and delisting notices) |
-| Live app | COLLATERALGUARD_URL (source in [`web/`](web/)) |
+| Live app | [collateralguard.vercel.app](https://collateralguard.vercel.app) (source in [`web/`](web/)) |
 | Live proof | [CONTRACT.md](CONTRACT.md): eight real markets read, four baskets (full, mixed and zero coverage), loans at the limit and over it, every refusal, every transaction linked |
 | Tests | 82 Direct Mode tests on DelistWatch's real check records; 42 safety mutations, all killed; 30 web-app tests |
 
