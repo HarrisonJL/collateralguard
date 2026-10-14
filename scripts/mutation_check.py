@@ -42,7 +42,7 @@ TIMEOUT = 120
 
 def run_suite() -> bool:
     """True if the suite fails (the mutation was killed)."""
-    proc = subprocess.Popen([str(PYTEST), "tests", "-q", "-x", "-p", "no:cacheprovider"], cwd=REPO,
+    proc = subprocess.Popen([str(PYTEST), "tests", "-q", "-x", "-p", "no:cacheprovider", "--ignore=tests/test_trust_path.py"], cwd=REPO,
                             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
     try:
         return proc.wait(timeout=TIMEOUT) != 0

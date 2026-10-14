@@ -6,12 +6,17 @@
 |---|---|
 | Network | GenLayer Studio Next (chain 61997) |
 | CollateralGuard | [`0x1b0C8D779D58DFD67CF491840A8b081094d53e8C`](https://explorer-studio-dev.genlayer.com/address/0x1b0C8D779D58DFD67CF491840A8b081094d53e8C) |
-| Reads | [DelistWatch `0x1AFffBad…85DAFc`](https://explorer-studio-dev.genlayer.com/address/0x1AFffBad8fCfBEFD9494fd8994118f586B85DAFc) (the published oracle: its validators read Binance's, OKX's and KuCoin's own market data and delisting notices) |
+| Reads | [DelistWatch `0x1AFffBad…85DAFc`](https://explorer-studio-dev.genlayer.com/address/0x1AFffBad8fCfBEFD9494fd8994118f586B85DAFc), the contract whose validators read Binance's, OKX's and KuCoin's own market data and delisting notices. **Its exact deployed source is included in this repository:** [`dependencies/delistwatch/`](dependencies/delistwatch/) |
 | Live app | [collateralguard.vercel.app](https://collateralguard.vercel.app) (source in [`web/`](web/)) |
 | Live proof | [CONTRACT.md](CONTRACT.md): eight real markets read, four baskets (full, mixed and zero coverage), loans at the limit and over it, every refusal, every transaction linked |
-| Tests | 82 Direct Mode tests on DelistWatch's real check records; 42 safety mutations, all killed; 30 web-app tests |
+| Trust path | [TRUST_PATH.md](TRUST_PATH.md): from the exchanges' own data, through DelistWatch's validators, to a loan, with line references, tests and live transactions |
+| Tests | 82 Direct Mode tests on DelistWatch's real check records; 42 safety mutations, all killed; 8 tests tying the policy to the included DelistWatch (whose own 82 tests run in place); 30 web-app tests |
 
 > **A policy, not a lender.** CollateralGuard records loans and limits; it does not hold or move tokens, and it does **not price the collateral**: the collateral value is what the caller states (a real lender feeds it from its own price source). What the policy adds is the liquidity side of the limit.
+
+## Where the non-deterministic part is
+
+**Not in the policy, and on purpose.** `contracts/collateral_guard.py` is a deterministic lending policy: no web access, no LLM. It cannot be a second, unaudited source of truth about a market; it turns agreed records into a loan limit. Everything that reads the exchanges, uses a model and reaches validator consensus happens in **DelistWatch**, which the policy reads, and DelistWatch's **exact deployed source is in this repository** ([`dependencies/delistwatch/`](dependencies/delistwatch/), byte-identical to the code on-chain). [TRUST_PATH.md](TRUST_PATH.md) walks the whole path with line references, the tests that keep it honest (`tests/test_trust_path.py`) and the live transactions that ran it.
 
 ## Why this exists
 
@@ -94,12 +99,14 @@ if int(limit["max_borrow"]) < amount:
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install genlayer-test==0.29.2 genvm-linter==0.11.0 pytest
-.venv/bin/pytest tests -q                       # 82 tests on DelistWatch's real check records
+.venv/bin/pytest tests -q                       # 82 contract tests + 8 trust-path tests
+(cd dependencies/delistwatch && ../../.venv/bin/pytest tests -q)   # DelistWatch's own 82 (offline)
 .venv/bin/genvm-lint check contracts/collateral_guard.py
 python3 scripts/mutation_check.py               # every safety mutation must be killed
 
 cd studio-next && npm ci
 npx tsx verify_code.ts <address> collateral_guard_studio_next.py     # on-chain code == this repo
+npx tsx verify_dependency.ts                                         # on-chain DelistWatch == dependencies/delistwatch
 
 cd ../web && npm ci && npm test && npm run build && npm run preview
 ```
@@ -109,8 +116,10 @@ cd ../web && npm ci && npm test && npm run build && npm run preview
 ```
 contracts/collateral_guard.py              tested source (GenVM v0.2.11)
 contracts/collateral_guard_studio_next.py  deployed port (Studio Next); web/src/lib carries a byte-identical copy
-tests/                                     Direct Mode tests, DelistWatch's real check records, mutations.txt
-scripts/                                   port, mutation check, CONTRACT.md builder
+dependencies/delistwatch/                  DelistWatch: the exact deployed contract the policy reads (source, tests, docs, licence)
+TRUST_PATH.md                              the end-to-end path, generated from the code and the live proof
+tests/                                     Direct Mode tests, DelistWatch's real check records, mutations.txt, test_trust_path.py
+scripts/                                   port, mutation check, CONTRACT.md and TRUST_PATH.md builders
 studio-next/                               deploy, live proof (prove.ts, live_proof.json), verify_code.ts
 web/                                       the live app (Vite + React + genlayer-js)
 research/                                  what the policy reads from DelistWatch, and what the live data showed
